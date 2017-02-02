@@ -208,7 +208,7 @@ function drawSAMLConfigPage(issuer, isEditSP, tableTitle, samlsp) {
     $('#digestAlgorithm').empty();
     $('#digestAlgorithm').append(digestAlgorithmRow);
     //start from here
-    if (appStatus !== "new") {
+    if (appStatus == "new") {
         if (providerProps["enableResponseSignature"] != null && providerProps["enableResponseSignature"].value == 'true') {
             $('#enableResponseSignature').prop('checked', true);
             $('#enableResponseSignature').val(true);
@@ -442,7 +442,7 @@ function drawSAMLConfigPage(issuer, isEditSP, tableTitle, samlsp) {
         $('#enableIdPInitSSO').prop("checked", true);
         $('#enableIdPInitSSO').val(true);
         //Store app access url should be constructed
-        $("#store-app-url-sec").hide();
+        //$("#store-app-url-sec").hide();
     } else {
         $('#enableIdPInitSSO').prop("checked", false);
         $('#enableIdPInitSSO').val(false);
@@ -711,7 +711,7 @@ function addAssertionConsumerURL() {
     $('.urlStatus').addClass('hide');
     var messageContainer = "<label class='' for='assertion-url' role='alert'>" +
         "<span class='alert-content'></span></label>";
-    
+
     var assertionConsumerURL = $("#assertionConsumerURLTxt").val();
     assertionConsumerURL = assertionConsumerURL.trim();
 
@@ -1152,4 +1152,3 @@ function populateIssuerName(appName, appVersion) {
     });
     return saml2SsoIssuer;
 }
-
