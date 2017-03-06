@@ -3,8 +3,6 @@ var log = new Log();
 var i18n = session.get("i18n");
 var appManager = require("thememanager");
 var managerHostObj = new appManager.ThemeManager();
-var allowedThemeTypes = require("../controllers/getThemeTypes.jag");
-
 
 uploadTheme();
 
@@ -20,10 +18,6 @@ function uploadTheme() {
         error = true;
         errorMsg = "Tenant is not specified, unable to deploy the theme.";
         log.error("Tenant is not specified, unable to deploy the theme.");
-    } else if (!validateType(themeType)) {
-        error = true;
-        errorMsg = "Please select the correct theme type";
-        log.error("Theme type : " + themeType + " is invalid");
     } else {
         try {
             managerHostObj.addCustomTheme(themeFile, tenantDomain, themeType, whiteListedExt);
@@ -38,15 +32,6 @@ function uploadTheme() {
               "error": error,
               "errorMsg": errorMsg
           });
-}
-
-//Check if the type is a predefined type
-function validateType(themeType) {
-    var allowedTypes = allowedThemeTypes.getThemeTypes();
-    if (!themeType || (stringify(allowedTypes).indexOf(themeType) == -1)) {
-        return false;
-    }
-    return true;
 }
 
 //Get white listed file extensions

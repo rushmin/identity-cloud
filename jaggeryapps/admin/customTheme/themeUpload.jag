@@ -106,17 +106,6 @@ var domainName = request.getParameter("domain");
 
                                                                                 <div class="form-group">
 
-                                                                                        <label>Theme Type
-                                                                                            <span class="required">*</span>
-                                                                                        </label>
-                                                                                        <label id="themeType-error" class="error" hidden="">This field is required.</label>
-                                                                                        <select name="themeType" class="form-control" id="themeType">
-                                                                                            <option selected="true" disabled="disabled">---Choose---</option>
-                                                                                        </select>
-
-                                                                                </div>
-                                                                                <div class="form-group">
-
                                                                                         <label>Theme File
                                                                                             <span class="required">*</span>
                                                                                         </label>
@@ -195,7 +184,6 @@ var domainName = request.getParameter("domain");
                                                             var userName = null;
                                                             cookie = "<%=session.get('auth-cookie')%>";
                                                             userName = "<%=session.get('user')%>";
-                                                            loadThemeList();
 
                                                         </script>
                                                     </body>
